@@ -1,5 +1,8 @@
 <template>
   <v-app>
+
+    <AppNav />
+
     <v-main>
       <router-view />
     </v-main>
