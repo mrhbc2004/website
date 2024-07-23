@@ -17,8 +17,13 @@
 <script setup>
 const items = [
   {
+    title: 'Website',
+    icon: `mdi-web`,
+    href: 'https://hirusha.xyz',
+  },
+  {
     title: 'Github',
-    icon: `$web`,
+    icon: `mdi-github`,
     href: 'https://github.com/hirusha-adi',
   },
 ]
