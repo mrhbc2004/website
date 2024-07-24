@@ -43,6 +43,10 @@ const clearSelectedINS = () => {
 const goBack = () => {
   router.go(-1);
 };
+
+const retry = () => {
+  window.location.reload();
+};
 </script>
 
 
@@ -72,7 +76,7 @@ const goBack = () => {
           <v-spacer></v-spacer>
           <!-- @click="dlgErrSummaryShow = false" -->
           <v-btn class="ms-auto" text="Go back" @click="goBack"></v-btn>
-          <!-- <v-btn class="ms-auto" text="Contact Us"></v-btn> -->
+          <v-btn class="ms-auto" text="Retry" @click="retry"></v-btn>
         </template>
       </v-card>
     </v-dialog>
