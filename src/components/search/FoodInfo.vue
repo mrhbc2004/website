@@ -166,6 +166,7 @@ const formattedContent = (key) => {
         </div>
 
         <!-- will always have atleast one card -->
+        <p class="ml-4 text-subtitle-2 font-italic">Learn more:</p>
         <v-card-actions class="pt-0">
             <v-row no-gutters>
                 <v-col v-for="(url, name) in insData.more_info.articles" :key="name" cols="auto" class="mb-2">
@@ -175,6 +176,7 @@ const formattedContent = (key) => {
                 </v-col>
             </v-row>
         </v-card-actions>
+
     </v-card>
 </template>
 
