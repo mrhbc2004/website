@@ -5,11 +5,19 @@ import ImageOCR from './search/ImageOCR.vue';
 import SearchBar from './search/SearchBar.vue';
 import FoodInfo from './search/FoodInfo.vue';
 import axios from "axios"
+import { useRouter } from 'vue-router';
+
 
 const API_INS_URL = 'http://localhost:3001/api/ins/';
 
+
+const router = useRouter();
+
+
 const selectedINS = ref([]);
 const insCodes = ref([]);
+const dlgErrSummaryShow = ref(false);
+const dlgErrSummaryError = ref('');
 
 onMounted(async () => {
   try {
@@ -17,9 +25,10 @@ onMounted(async () => {
     insCodes.value = response.data
   } catch (error) {
     console.error('Failed to load INS codes summary list:', error);
+    dlgErrSummaryShow.value = true;
+    dlgErrSummaryError.value = ` ${error}`
   }
 });
-
 
 const addToSelectedINS = (item) => {
   if (!selectedINS.value.includes(item)) {
@@ -29,6 +38,10 @@ const addToSelectedINS = (item) => {
 
 const clearSelectedINS = () => {
   selectedINS.value = [];
+};
+
+const goBack = () => {
+  router.go(-1);
 };
 </script>
 
@@ -51,5 +64,17 @@ const clearSelectedINS = () => {
       </v-row>
 
     </v-responsive>
+
+    <v-dialog v-model="dlgErrSummaryShow" width="auto" persistent>
+      <v-card max-width="400" prepend-icon="mdi-alert-circle" title="An error has occured!"
+        :text="`Failed to load the summary list from the backend. Cannot connect to the server. Error: ${dlgErrSummaryError}`">
+        <template v-slot:actions>
+          <v-spacer></v-spacer>
+          <!-- @click="dlgErrSummaryShow = false" -->
+          <v-btn class="ms-auto" text="Go back" @click="goBack"></v-btn>
+          <!-- <v-btn class="ms-auto" text="Contact Us"></v-btn> -->
+        </template>
+      </v-card>
+    </v-dialog>
   </v-container>
 </template>
