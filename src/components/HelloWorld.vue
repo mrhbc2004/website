@@ -4,10 +4,22 @@ import { ref } from 'vue';
 import ImageOCR from './search/ImageOCR.vue';
 import SearchBar from './search/SearchBar.vue';
 import FoodInfo from './search/FoodInfo.vue';
-import ins from "../data/ins.json"
+import axios from "axios"
 
-const insCodes = ref(ins);
+const API_INS_URL = 'http://localhost:3001/api/ins/';
+
 const selectedINS = ref([]);
+const insCodes = ref([]);
+
+onMounted(async () => {
+  try {
+    const response = await axios.get(API_INS_URL + 'summary');
+    insCodes.value = response.data
+  } catch (error) {
+    console.error('Failed to load INS codes summary list:', error);
+  }
+});
+
 
 const addToSelectedINS = (item) => {
   if (!selectedINS.value.includes(item)) {

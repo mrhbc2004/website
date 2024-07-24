@@ -1,7 +1,6 @@
 <script setup>
 
 import { ref } from 'vue'
-import { fa } from 'vuetify/locale';
 
 const props = defineProps({
     inscode: Object,
