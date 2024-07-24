@@ -1,6 +1,5 @@
 <script setup>
 import { ref, onMounted } from 'vue';
-import foode from 'food-e';
 
 const props = defineProps({
     insCodes: {
@@ -29,7 +28,6 @@ const handleSelectionChange = (items) => {
     });
 };
 
-// console.log(props.insCodes);
 // console.log(props.insCodes);
 
 </script>
