@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch, onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 import foode from 'food-e';
 
 const props = defineProps({
@@ -42,9 +42,8 @@ onMounted(async () => {
 });
 
 const handleSelectionChange = (items) => {
-    console.log(items);
+    props.clearSelectedINS();
     items.forEach((item) => {
-        console.log(props.selectedINS);
         props.addToSelectedINS(item);
     });
 };
@@ -54,6 +53,6 @@ const handleSelectionChange = (items) => {
 <template>
     <div>
         <v-combobox clearable chips multiple label="Search INS Codes" :items="insCodes"
-            @update:model-value="handleSelectionChange" @click:clear="props.clearSelectedINS"></v-combobox>
+            @update:model-value="handleSelectionChange"></v-combobox>
     </div>
 </template>
