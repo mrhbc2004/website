@@ -43,7 +43,12 @@ const clearSelectedINS = () => {
       <SearchBar :insCodes="insCodes" :selectedINS="selectedINS" :addToSelectedINS="addToSelectedINS"
         :clearSelectedINS="clearSelectedINS" />
 
-      <FoodInfo v-for="inscode in selectedINS" :inscode="inscode" />
+      <!-- <FoodInfo v-for="inscode in selectedINS" :inscode="inscode" /> -->
+      <v-row>
+        <v-col v-for="inscode in selectedINS" :key="inscode.code" cols="12" sm="6" md="6">
+          <FoodInfo :inscode="inscode" />
+        </v-col>
+      </v-row>
 
     </v-responsive>
   </v-container>
