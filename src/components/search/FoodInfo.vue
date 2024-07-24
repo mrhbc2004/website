@@ -51,7 +51,7 @@ const show = ref(false)
                 </v-card-text>
             </div>
         </v-expand-transition>
-<!-- 
+        <!-- 
         <div class="buttons-container">
             <div v-if="props.inscode.more_info.articles">
                 <div v-for="(url, name) in props.inscode.more_info.articles" :key="name" class="button-wrapper">
@@ -63,17 +63,13 @@ const show = ref(false)
         </div> -->
 
         <v-card-actions class="pt-0">
-            <v-btn  
-                v-if="props.inscode.more_info.articles"  
-                v-for="(url, name) in props.inscode.more_info.articles" 
-                :key="name" 
-                :text="name"
-                color="purple-accent-2" 
-                variant="text"
-                :href="url"
-                target="_blank"
-            >
-            </v-btn>
+            <v-row no-gutters>
+                <v-col v-for="(url, name) in props.inscode.more_info.articles" :key="name" cols="auto" class="mb-2">
+                    <v-btn :href="url" target="_blank" color="purple-accent-2" variant="text" class="mx-1">
+                        {{ name }}
+                    </v-btn>
+                </v-col>
+            </v-row>
         </v-card-actions>
     </v-card>
 </template>
