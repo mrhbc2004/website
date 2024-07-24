@@ -170,7 +170,7 @@ const formattedContent = (key) => {
             <v-row no-gutters>
                 <v-col v-for="(url, name) in insData.more_info.articles" :key="name" cols="auto" class="mb-2">
                     <v-btn :href="url" target="_blank" color="purple-accent-2" variant="text" class="mx-1">
-                        &nearr; {{ name }}
+                        {{ name }}
                     </v-btn>
                 </v-col>
             </v-row>
