@@ -54,102 +54,118 @@ const formattedContent = (key) => {
         </v-card-text>
 
         <!-- Side Effects -->
-        <v-card-actions class="highlight-on-hover">
-            <p class="ml-2 font-weight-bold text-h6">Side Effects</p>
-            <v-spacer></v-spacer>
-            <v-btn :icon="show.side_effects ? 'mdi-chevron-up' : 'mdi-chevron-down'"
-                @click="show.side_effects = !show.side_effects"></v-btn>
-        </v-card-actions>
-        <v-expand-transition>
-            <div v-show="show.side_effects">
-                <v-divider></v-divider>
-                <v-card-text v-html="formattedContent('side_effects')"></v-card-text>
-            </div>
-        </v-expand-transition>
+        <div v-if="insData.more_info.side_effects">
+            <v-card-actions class="highlight-on-hover">
+                <p class="ml-2 font-weight-bold text-h6">Side Effects</p>
+                <v-spacer></v-spacer>
+                <v-btn :icon="show.side_effects ? 'mdi-chevron-up' : 'mdi-chevron-down'"
+                    @click="show.side_effects = !show.side_effects"></v-btn>
+            </v-card-actions>
+            <v-expand-transition>
+                <div v-show="show.side_effects">
+                    <v-divider></v-divider>
+                    <v-card-text v-html="formattedContent('side_effects')"></v-card-text>
+                </div>
+            </v-expand-transition>
+        </div>
 
         <!-- Overview -->
-        <v-card-actions class="highlight-on-hover">
-            <p class="ml-2 font-weight-bold text-h6">Overview</p>
-            <v-spacer></v-spacer>
-            <v-btn :icon="show.overview ? 'mdi-chevron-up' : 'mdi-chevron-down'"
-                @click="show.overview = !show.overview"></v-btn>
-        </v-card-actions>
-        <v-expand-transition>
-            <div v-show="show.overview">
-                <v-divider></v-divider>
-                <v-card-text v-html="formattedContent('overview')"></v-card-text>
-            </div>
-        </v-expand-transition>
+        <div v-if="insData.more_info.overview">
+            <v-card-actions class="highlight-on-hover">
+                <p class="ml-2 font-weight-bold text-h6">Overview</p>
+                <v-spacer></v-spacer>
+                <v-btn :icon="show.overview ? 'mdi-chevron-up' : 'mdi-chevron-down'"
+                    @click="show.overview = !show.overview"></v-btn>
+            </v-card-actions>
+            <v-expand-transition>
+                <div v-show="show.overview">
+                    <v-divider></v-divider>
+                    <v-card-text v-html="formattedContent('overview')"></v-card-text>
+                </div>
+            </v-expand-transition>
+        </div>
 
         <!-- Uses -->
-        <v-card-actions class="highlight-on-hover">
-            <p class="ml-2 font-weight-bold text-h6">Uses</p>
-            <v-spacer></v-spacer>
-            <v-btn :icon="show.uses ? 'mdi-chevron-up' : 'mdi-chevron-down'" @click="show.uses = !show.uses"></v-btn>
-        </v-card-actions>
-        <v-expand-transition>
-            <div v-show="show.uses">
-                <v-divider></v-divider>
-                <v-card-text v-html="formattedContent('uses')"></v-card-text>
-            </div>
-        </v-expand-transition>
+        <div v-if="insData.more_info.uses">
+            <v-card-actions class="highlight-on-hover">
+                <p class="ml-2 font-weight-bold text-h6">Uses</p>
+                <v-spacer></v-spacer>
+                <v-btn :icon="show.uses ? 'mdi-chevron-up' : 'mdi-chevron-down'"
+                    @click="show.uses = !show.uses"></v-btn>
+            </v-card-actions>
+            <v-expand-transition>
+                <div v-show="show.uses">
+                    <v-divider></v-divider>
+                    <v-card-text v-html="formattedContent('uses')"></v-card-text>
+                </div>
+            </v-expand-transition>
+        </div>
 
         <!-- Precautions -->
-        <v-card-actions class="highlight-on-hover">
-            <p class="ml-2 font-weight-bold text-h6">Precautions</p>
-            <v-spacer></v-spacer>
-            <v-btn :icon="show.precautions ? 'mdi-chevron-up' : 'mdi-chevron-down'"
-                @click="show.precautions = !show.precautions"></v-btn>
-        </v-card-actions>
-        <v-expand-transition>
-            <div v-show="show.precautions">
-                <v-divider></v-divider>
-                <v-card-text v-html="formattedContent('precautions')"></v-card-text>
-            </div>
-        </v-expand-transition>
+        <div v-if="insData.more_info.precautions">
+            <v-card-actions class="highlight-on-hover">
+                <p class="ml-2 font-weight-bold text-h6">Precautions</p>
+                <v-spacer></v-spacer>
+                <v-btn :icon="show.precautions ? 'mdi-chevron-up' : 'mdi-chevron-down'"
+                    @click="show.precautions = !show.precautions"></v-btn>
+            </v-card-actions>
+            <v-expand-transition>
+                <div v-show="show.precautions">
+                    <v-divider></v-divider>
+                    <v-card-text v-html="formattedContent('precautions')"></v-card-text>
+                </div>
+            </v-expand-transition>
+        </div>
 
         <!-- Interactions -->
-        <v-card-actions class="highlight-on-hover">
-            <p class="ml-2 font-weight-bold text-h6">Interactions</p>
-            <v-spacer></v-spacer>
-            <v-btn :icon="show.interactions ? 'mdi-chevron-up' : 'mdi-chevron-down'"
-                @click="show.interactions = !show.interactions"></v-btn>
-        </v-card-actions>
-        <v-expand-transition>
-            <div v-show="show.interactions">
-                <v-divider></v-divider>
-                <v-card-text v-html="formattedContent('interactions')"></v-card-text>
-            </div>
-        </v-expand-transition>
+        <div v-if="insData.more_info.interactions">
+            <v-card-actions class="highlight-on-hover">
+                <p class="ml-2 font-weight-bold text-h6">Interactions</p>
+                <v-spacer></v-spacer>
+                <v-btn :icon="show.interactions ? 'mdi-chevron-up' : 'mdi-chevron-down'"
+                    @click="show.interactions = !show.interactions"></v-btn>
+            </v-card-actions>
+            <v-expand-transition>
+                <div v-show="show.interactions">
+                    <v-divider></v-divider>
+                    <v-card-text v-html="formattedContent('interactions')"></v-card-text>
+                </div>
+            </v-expand-transition>
+        </div>
 
         <!-- Origin -->
-        <v-card-actions class="highlight-on-hover">
-            <p class="ml-2 font-weight-bold text-h6">Origin</p>
-            <v-spacer></v-spacer>
-            <v-btn :icon="show.origin ? 'mdi-chevron-up' : 'mdi-chevron-down'"
-                @click="show.origin = !show.origin"></v-btn>
-        </v-card-actions>
-        <v-expand-transition>
-            <div v-show="show.origin">
-                <v-divider></v-divider>
-                <v-card-text v-html="formattedContent('origin')"></v-card-text>
-            </div>
-        </v-expand-transition>
+        <div v-if="insData.more_info.origin">
+            <v-card-actions class="highlight-on-hover">
+                <p class="ml-2 font-weight-bold text-h6">Origin</p>
+                <v-spacer></v-spacer>
+                <v-btn :icon="show.origin ? 'mdi-chevron-up' : 'mdi-chevron-down'"
+                    @click="show.origin = !show.origin"></v-btn>
+            </v-card-actions>
+            <v-expand-transition>
+                <div v-show="show.origin">
+                    <v-divider></v-divider>
+                    <v-card-text v-html="formattedContent('origin')"></v-card-text>
+                </div>
+            </v-expand-transition>
+        </div>
 
         <!-- Daily Intake -->
-        <v-card-actions class="highlight-on-hover">
-            <p class="ml-2 font-weight-bold text-h6">Daily Intake</p>
-            <v-spacer></v-spacer>
-            <v-btn :icon="show.daily_intake ? 'mdi-chevron-up' : 'mdi-chevron-down'"
-                @click="show.daily_intake = !show.daily_intake"></v-btn>
-        </v-card-actions>
-        <v-expand-transition>
-            <div v-show="show.daily_intake">
-                <v-divider></v-divider>
-                <v-card-text v-html="formattedContent('daily_intake')"></v-card-text>
-            </div>
-        </v-expand-transition>
+        <div v-if="insData.more_info.daily_intake">
+            <v-card-actions class="highlight-on-hover">
+                <p class="ml-2 font-weight-bold text-h6">Daily Intake</p>
+                <v-spacer></v-spacer>
+                <v-btn :icon="show.daily_intake ? 'mdi-chevron-up' : 'mdi-chevron-down'"
+                    @click="show.daily_intake = !show.daily_intake"></v-btn>
+            </v-card-actions>
+            <v-expand-transition>
+                <div v-show="show.daily_intake">
+                    <v-divider></v-divider>
+                    <v-card-text v-html="formattedContent('daily_intake')"></v-card-text>
+                </div>
+            </v-expand-transition>
+        </div>
 
+        <!-- will always have atleast one card -->
         <v-card-actions class="pt-0">
             <v-row no-gutters>
                 <v-col v-for="(url, name) in insData.more_info.articles" :key="name" cols="auto" class="mb-2">
@@ -173,6 +189,6 @@ const formattedContent = (key) => {
 }
 
 .highlight-on-hover:hover {
-    background-color: var(--v-theme-surface-light);
+    /* background-color: #1b1b1b; */
 }
 </style>
