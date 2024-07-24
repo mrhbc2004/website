@@ -9,7 +9,7 @@ onMounted(async () => {
 
         // ensure a list is returned
         if (Array.isArray(additives)) {
-            insCodes.value = additives.map(additive => additive.code);
+            insCodes.value = additives.map(additive => additive.code + ` - ${additive.names.slice(0, 75)}`);
         } else {
             console.error('Unexpected data format:', additives);
 
