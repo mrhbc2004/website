@@ -1,15 +1,10 @@
 <script setup>
-
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 import axios from 'axios';
 
 const props = defineProps({
     inscode: Object,
 });
-
-const API_INS_SINGLE_URL = 'http://localhost:3001/api/ins/code/' + props.inscode.code;
-console.log(API_INS_SINGLE_URL)
-
 
 let insData = {};
 const show = ref(
@@ -24,6 +19,8 @@ const show = ref(
     }
 )
 
+
+const API_INS_SINGLE_URL = 'http://localhost:3001/api/ins/code/' + props.inscode.code;
 try {
     const response = await axios.get(API_INS_SINGLE_URL);
     insData = response.data
@@ -31,7 +28,6 @@ try {
     console.error('Failed to load a INS code:', error);
 }
 
-console.log(insData)
 
 const formattedContent = (key) => {
     return computed(() => {
@@ -39,7 +35,6 @@ const formattedContent = (key) => {
         return insData.more_info[key].replace(/\n/g, '<br><br>');
     }).value;
 };
-
 </script>
 
 <template>

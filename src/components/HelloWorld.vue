@@ -37,7 +37,7 @@ const clearSelectedINS = () => {
   <v-container>
     <v-responsive class="mx-auto" max-width="900">
 
-      <h2>{{ selectedINS }}</h2>
+      <!-- <h2>{{ selectedINS }}</h2> -->
       <ImageOCR :insCodes="insCodes" :selectedINS="selectedINS" :addToSelectedINS="addToSelectedINS"
         :clearSelectedINS="clearSelectedINS" />
       <SearchBar :insCodes="insCodes" :selectedINS="selectedINS" :addToSelectedINS="addToSelectedINS"
