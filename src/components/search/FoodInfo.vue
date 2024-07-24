@@ -6,7 +6,13 @@ const props = defineProps({
     inscode: Object,
 });
 
-const show = ref(false)
+const show = ref(
+    {
+        origin: false,
+        daily_intake: false,
+        side_effects: true,
+    }
+)
 
 </script>
 
@@ -17,50 +23,62 @@ const show = ref(false)
         </template>
 
         <v-card-subtitle class="overflow-below">
-            {{ props.inscode.type }}
+            <p>
+                {{ props.inscode.names }}
+            </p>
         </v-card-subtitle>
 
         <v-card-text>
-            <p><strong>Origin:</strong> {{ props.inscode.more_info.origin }}</p>
-            <p><strong>Characteristics:</strong> {{ props.inscode.more_info.characteristics }}</p>
-            <p><strong>Daily Intake:</strong> {{ props.inscode.more_info.daily_intake }}</p>
-            <p><strong>Side Effects:</strong> {{ props.inscode.more_info.side_effects }}</p>
-
-
-
+            This is a {{ props.inscode.type }}
         </v-card-text>
 
-        <v-card-actions>
-            <p>Origin</p>
-            <!-- <v-btn color="orange-lighten-2" text="Explore"></v-btn> -->
-
+        <!-- Side Effects -->
+        <v-card-actions class="highlight-on-hover">
+            <p class="ml-2 font-weight-bold text-h6">Side Effects</p>
             <v-spacer></v-spacer>
-
-            <v-btn :icon="show ? 'mdi-chevron-up' : 'mdi-chevron-down'" @click="show = !show"></v-btn>
+            <v-btn :icon="show.side_effects ? 'mdi-chevron-up' : 'mdi-chevron-down'"
+                @click="show.side_effects = !show.side_effects"></v-btn>
         </v-card-actions>
-
         <v-expand-transition>
-            <div v-show="show">
+            <div v-show="show.side_effects">
                 <v-divider></v-divider>
-
                 <v-card-text>
-                    I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time
-                    for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data
-                    file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got
-                    to find a way to escape.
+                    {{ props.inscode.more_info.side_effects }}
                 </v-card-text>
             </div>
         </v-expand-transition>
-        <!-- 
-        <div class="buttons-container">
-            <div v-if="props.inscode.more_info.articles">
-                <div v-for="(url, name) in props.inscode.more_info.articles" :key="name" class="button-wrapper">
-                    <a :href="url" target="_blank">
-                        <v-btn color="purple-accent-2 pt-0" variant="text">{{ name }}</v-btn>
-                    </a>
-                </div>
+
+        <!-- Origin -->
+        <v-card-actions class="highlight-on-hover">
+            <p class="ml-2 font-weight-bold text-h6">Origin</p>
+            <v-spacer></v-spacer>
+            <v-btn :icon="show.origin ? 'mdi-chevron-up' : 'mdi-chevron-down'"
+                @click="show.origin = !show.origin"></v-btn>
+        </v-card-actions>
+        <v-expand-transition>
+            <div v-show="show.origin">
+                <v-divider></v-divider>
+                <v-card-text>
+                    {{ props.inscode.more_info.origin }}
+                </v-card-text>
             </div>
-        </div> -->
+        </v-expand-transition>
+
+        <!-- Daily Intake -->
+        <v-card-actions class="highlight-on-hover">
+            <p class="ml-2 font-weight-bold text-h6">Daily Intake</p>
+            <v-spacer></v-spacer>
+            <v-btn :icon="show.daily_intake ? 'mdi-chevron-up' : 'mdi-chevron-down'"
+                @click="show.daily_intake = !show.daily_intake"></v-btn>
+        </v-card-actions>
+        <v-expand-transition>
+            <div v-show="show.daily_intake">
+                <v-divider></v-divider>
+                <v-card-text>
+                    {{ props.inscode.more_info.daily_intake }}
+                </v-card-text>
+            </div>
+        </v-expand-transition>
 
         <v-card-actions class="pt-0">
             <v-row no-gutters>
@@ -78,5 +96,13 @@ const show = ref(false)
 .overflow-below {
     white-space: normal;
     overflow: visible;
+}
+
+.highlight-on-hover {
+    transition: background-color 0.3s ease;
+}
+
+.highlight-on-hover:hover {
+    background-color: var(--v-theme-surface-light);
 }
 </style>
