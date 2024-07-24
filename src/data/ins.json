@@ -1,11 +1,11 @@
 [
     {
         "code": "E100",
-        "names": "Curcumin (from turmeric turmericturmericturmericturmeric)",
+        "names": "Curcumin (from turmeric)",
         "display_name": "E100 (Curcumin)",
         "type": "color (Yellow-orange)",
         "status": "e u",
-        "basic_healthiness": "good", 
+        "icon": "mdi-check-circle", 
         "more_info": {
             "origin": "Natural colour isolated from the roots and stem of Yellowroot (Curcuma longa  and Curcuma domestica). Turmeric is the crude extract, whereas curcumin is the purified compound. It imparts the yellow colour to curry powder.",
             "characteristics": "Food colour, whose colour ranges from yellow to red, depending on pH (acidity). It is not very soluble in water.",
@@ -15,7 +15,9 @@
                 "Wikipedia": "https://en.wikipedia.org/wiki/Curcumin",
                 "WebMD": "https://www.webmd.com/vitamins/ai/ingredientmono-662/turmeric",
                 "PubChem": "https://pubchem.ncbi.nlm.nih.gov/compound/Curcumin",
-                "PubMed": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5664031/"
+                "PubMed": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5664031/",
+                "PubMed2": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5664031/",
+                "PubMe3": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5664031/"
             }
         }
     }
