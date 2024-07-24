@@ -1,11 +1,17 @@
 <script setup>
 
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue';
+import axios from 'axios';
 
 const props = defineProps({
     inscode: Object,
 });
 
+const API_INS_SINGLE_URL = 'http://localhost:3001/api/ins/code/' + props.inscode.code;
+console.log(API_INS_SINGLE_URL)
+
+
+let insData = {};
 const show = ref(
     {
         origin: false,
@@ -18,29 +24,38 @@ const show = ref(
     }
 )
 
+try {
+    const response = await axios.get(API_INS_SINGLE_URL);
+    insData = response.data
+} catch (error) {
+    console.error('Failed to load a INS code:', error);
+}
+
+console.log(insData)
+
 const formattedContent = (key) => {
     return computed(() => {
         // Replace \n with <br><br>
-        return props.inscode.more_info[key].replace(/\n/g, '<br><br>');
+        return insData.more_info[key].replace(/\n/g, '<br><br>');
     }).value;
 };
 
 </script>
 
 <template>
-    <v-card :prepend-icon="props.inscode.icon" max-width="600">
+    <v-card :prepend-icon="insData.icon" max-width="600">
         <template v-slot:title>
-            <span class="font-weight-black overflow-below"> {{ props.inscode.display_name }}</span>
+            <span class="font-weight-black overflow-below"> {{ insData.display_name }}</span>
         </template>
 
         <v-card-subtitle class="overflow-below">
             <p>
-                {{ props.inscode.names }}
+                {{ insData.names }}
             </p>
         </v-card-subtitle>
 
         <v-card-text>
-            This is a {{ props.inscode.type }}
+            This is a {{ insData.type }}
         </v-card-text>
 
         <!-- Side Effects -->
@@ -142,7 +157,7 @@ const formattedContent = (key) => {
 
         <v-card-actions class="pt-0">
             <v-row no-gutters>
-                <v-col v-for="(url, name) in props.inscode.more_info.articles" :key="name" cols="auto" class="mb-2">
+                <v-col v-for="(url, name) in insData.more_info.articles" :key="name" cols="auto" class="mb-2">
                     <v-btn :href="url" target="_blank" color="purple-accent-2" variant="text" class="mx-1">
                         &nearr; {{ name }}
                     </v-btn>
