@@ -53,13 +53,7 @@ const handleSelectionChange = (items) => {
 
 <template>
     <div>
-        <v-combobox 
-            clearable chips multiple 
-            label="Search INS Codes" 
-            :items="insCodes" 
-            item-value="code"    
-            item-title="display_name" 
-            @update:model-value="handleSelectionChange"
-        ></v-combobox>
+        <v-combobox clearable chips multiple label="Search INS Codes" :items="insCodes" item-value="code"
+            item-title="display_name" @update:model-value="handleSelectionChange"></v-combobox>
     </div>
 </template>

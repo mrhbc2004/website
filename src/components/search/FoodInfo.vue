@@ -14,6 +14,13 @@ const show = ref(
     }
 )
 
+const formattedContent = (key) => {
+    return computed(() => {
+        // Replace \n with <br><br>
+        return props.inscode.more_info[key].replace(/\n/g, '<br><br>');
+    }).value;
+};
+
 </script>
 
 <template>
@@ -42,9 +49,7 @@ const show = ref(
         <v-expand-transition>
             <div v-show="show.side_effects">
                 <v-divider></v-divider>
-                <v-card-text>
-                    {{ props.inscode.more_info.side_effects }}
-                </v-card-text>
+                <v-card-text v-html="formattedContent('side_effects')"></v-card-text>
             </div>
         </v-expand-transition>
 
@@ -58,9 +63,7 @@ const show = ref(
         <v-expand-transition>
             <div v-show="show.origin">
                 <v-divider></v-divider>
-                <v-card-text>
-                    {{ props.inscode.more_info.origin }}
-                </v-card-text>
+                <v-card-text v-html="formattedContent('origin')"></v-card-text>
             </div>
         </v-expand-transition>
 
@@ -74,9 +77,7 @@ const show = ref(
         <v-expand-transition>
             <div v-show="show.daily_intake">
                 <v-divider></v-divider>
-                <v-card-text>
-                    {{ props.inscode.more_info.daily_intake }}
-                </v-card-text>
+                <v-card-text v-html="formattedContent('daily_intake')"></v-card-text>
             </div>
         </v-expand-transition>
 
