@@ -30,8 +30,11 @@ const drawer = ref(null)
             <v-divider></v-divider>
 
             <v-list density="compact" nav>
-                <v-list-item prepend-icon="mdi-view-dashboard" title="Home" value="home"></v-list-item>
-                <v-list-item prepend-icon="mdi-forum" title="About" value="about"></v-list-item>
+                <v-list-item prepend-icon="mdi-magnify" title="Lookup" value="home"></v-list-item>
+                <v-list-item prepend-icon="mdi-history" title="History" value="history"></v-list-item>
+                <v-list-item prepend-icon="mdi-wrench" title="API Keys" value="apikeys"></v-list-item>
+                <v-list-item prepend-icon="mdi-cog" title="Account" value="about"></v-list-item>
+                <v-list-item prepend-icon="mdi-exit-to-app" title="Log Out" value="logout"></v-list-item>
             </v-list>
         </v-navigation-drawer>
     </div>
