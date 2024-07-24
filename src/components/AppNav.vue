@@ -1,31 +1,7 @@
 <script setup>
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 
-const items = [
-    {
-        title: 'Foo',
-        value: 'foo',
-    },
-    {
-        title: 'Bar',
-        value: 'bar',
-    },
-    {
-        title: 'Fizz',
-        value: 'fizz',
-    },
-    {
-        title: 'Buzz',
-        value: 'buzz',
-    },
-]
-
-const drawer = ref(false)
-const group = ref(null)
-
-watch(group, () => {
-    drawer.value = false
-})
+const drawer = ref(null)
 </script>
 
 <template>
@@ -36,18 +12,27 @@ watch(group, () => {
             </template>
 
             <v-app-bar-title>is it healthy?</v-app-bar-title>
-
+            <v-spacer></v-spacer>
             <template v-slot:append>
                 <v-btn icon="mdi-camera"></v-btn>
-
                 <v-btn icon="mdi-magnify"></v-btn>
-
                 <v-btn icon="mdi-dots-vertical"></v-btn>
             </template>
         </v-app-bar>
 
-        <v-navigation-drawer v-model="drawer" :location="$vuetify.display.mobile ? 'bottom' : undefined" temporary>
-            <v-list :items="items"></v-list>
+        <v-navigation-drawer v-model="drawer" temporary>
+            <v-list-item 
+                title="Hirusha Adikari"
+                prepend-icon="mdi-account"
+                class="mt-3 mb-2"
+            ></v-list-item>
+
+            <v-divider></v-divider>
+
+            <v-list density="compact" nav>
+                <v-list-item prepend-icon="mdi-view-dashboard" title="Home" value="home"></v-list-item>
+                <v-list-item prepend-icon="mdi-forum" title="About" value="about"></v-list-item>
+            </v-list>
         </v-navigation-drawer>
     </div>
 </template>
