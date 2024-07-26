@@ -8,7 +8,7 @@ import axios from "axios"
 import { useRouter } from 'vue-router';
 
 
-const API_INS_URL = 'http://localhost:3001/api/ins/';
+const DATA_SUMMARY = 'https://raw.githubusercontent.com/is-it-healthy/data/v2/dist/ins-summary.json';
 
 
 const router = useRouter();
@@ -21,7 +21,7 @@ const dlgErrSummaryError = ref('');
 
 onMounted(async () => {
   try {
-    const response = await axios.get(API_INS_URL + 'summary');
+    const response = await axios.get(DATA_SUMMARY);
     insCodes.value = response.data
   } catch (error) {
     console.error('Failed to load INS codes summary list:', error);

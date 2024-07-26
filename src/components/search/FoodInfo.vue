@@ -20,9 +20,9 @@ const show = ref(
 )
 
 
-const API_INS_SINGLE_URL = 'http://localhost:3001/api/ins/code/' + props.inscode.code;
+const DATA_SINGLE_ITEM = 'https://raw.githubusercontent.com/is-it-healthy/data/v2/dist/single/' + props.inscode.code + '.json';
 try {
-    const response = await axios.get(API_INS_SINGLE_URL);
+    const response = await axios.get(DATA_SINGLE_ITEM);
     insData = response.data
 } catch (error) {
     console.error('Failed to load a INS code:', error);
