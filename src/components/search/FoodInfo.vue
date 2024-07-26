@@ -51,6 +51,12 @@ const formattedContent = (key) => {
 
         <v-card-text>
             This is a {{ insData.type }}
+            <br>
+            <br>
+            <div v-if="insData.more_info.banned_in">
+                {{ insData.more_info.banned_in }}
+            </div>
+
         </v-card-text>
 
         <!-- Side Effects -->
