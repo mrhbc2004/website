@@ -1,5 +1,5 @@
 <template>
-  <HelloWorld />
+  <ViewIndex />
 </template>
 
 <script setup>
